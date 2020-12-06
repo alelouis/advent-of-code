@@ -20,7 +20,6 @@ print(f'part-1 answer: {answer}')
 
 """ --> Part 2 <--"""
 
-
 all_possible_ids = [row * 8 + col for row in range(128) for col in range(8)]
 with open(filepath) as fp:
     for line in (fp):
