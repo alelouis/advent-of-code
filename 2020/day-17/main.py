@@ -1,27 +1,22 @@
-lines, N = open('input').read().replace('\n',''), 8
-live_cells = set([(i%N, i//N, 0) for i, l in enumerate(lines) if l == '#'])
-delta = [(x, y, z) for x in range(-1,2) for y in range(-1,2) for z in range(-1,2)]
-neis = delta.copy()
-neis.remove((0,0,0))
+lines, dim, N = open('input').read().replace('\n',''), 4, 8
+active = set([(i%N, i//N, 0, 0) for i, l in enumerate(lines) if l == '#'])
+zo = [(x, y, z, w) for x in range(-1,2) for y in range(-1,2) for z in range(-1,2) for w in range(-1, 2)]
+ns = zo.copy()
+ns.remove(tuple([0]*dim))
 
-def next_state(c_cell):
-    count = 0
-    for n in neis:
-        nei = (c_cell[0] + n[0], c_cell[1] + n[1], c_cell[2] + n[2])
-        if nei in live_cells:
-            count += 1
-    if c_cell in live_cells and not (count == 2 or count == 3):
-        next_live_cells.remove(c_cell)
-    elif c_cell not in live_cells and count == 3:
-        next_live_cells.add(c_cell)
+def next_state(c):
+    c_n = 0
+    for n in ns:
+        _n = (c[0] + n[0], c[1] + n[1], c[2] + n[2], c[3] + n[3])
+        if _n in active: c_n += 1
+    if c in active and not (c_n == 2 or c_n == 3): _active.remove(c)
+    elif c_n == 3: _active.add(c)
 
-cycles = 6
-for cycle in range(cycles):
-    print(len(live_cells))
-    next_live_cells = live_cells.copy()
-    checked_cells = set([(pos[0] + d[0], pos[1] + d[1], pos[2] + d[2]) for pos in live_cells for d in delta])
-    for cell in checked_cells:
-        next_state(cell)
-    live_cells = next_live_cells.copy()
+for cycle in range(6):
+    _active = active.copy()
+    check_p = set([(p[0]+d[0], p[1]+d[1], p[2]+d[2], p[3]+d[3]) for p in active for d in zo])
+    for c in check_p:
+        next_state(c)
+    active = _active.copy()
 
-print(len(live_cells))
+print(f'part-1/2 answer: {len(active)}')
