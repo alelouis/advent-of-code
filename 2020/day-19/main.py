@@ -24,8 +24,11 @@ def solve(i, rule):
             else solve(r, d[r]) if r.isnumeric() \
             else r \
             for r in rule]
-
+import time
+start_time = time.time()
 res = str(solve(0, d['0']))
 reg = '^' + res.replace('[', '(').replace(']', ')').replace('\'', '').replace(', ', '') + '$'
-answer = sum([bool(re.compile(reg).match(s)) for s in ss])
+rere = re.compile(reg)
+answer = sum(bool(rere.match(s)) for s in ss)
+print("--- %s seconds ---" % (time.time() - start_time))
 print(f'part-1/2 answer: {answer}')
