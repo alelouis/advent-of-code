@@ -1,4 +1,4 @@
-lines = [int(l.strip()) for l in open('input_example') if l.strip().isnumeric()]
+lines = [int(l.strip()) for l in open('input') if l.strip().isnumeric()]
 d_1, d_2 = lines[0:int(len(lines)/2)], lines[int(len(lines)/2):]
 while len(d_1) != 0 and len(d_2) != 0:
     d_1 += [d_1[0], d_2[0]] if d_1[0] > d_2[0] else []
