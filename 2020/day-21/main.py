@@ -8,6 +8,7 @@ for l in open('input'):
 
 def delete_lonely(d):
     for key_1 in d:
+        breakpoint()
         if len(d[key_1]) == 1:
             for key_2 in d:
                 if key_1 != key_2 and d[key_1][0] in d[key_2]:
