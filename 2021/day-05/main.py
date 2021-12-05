@@ -7,10 +7,10 @@ for l in lines:
     x = list(range(x1, x2 + (-1 if x1 > x2 else 1), -1 if x1 > x2 else 1))
     y = list(range(y1, y2 + (-1 if y1 > y2 else 1), -1 if y1 > y2 else 1))
     if x1 == x2:
-        for i in range(len(y)): vents[x1][y[i]] += 1
+        for yi in y: vents[x1][yi] += 1
     elif y1 == y2:
-        for i in range(len(x)): vents[x[i]][y1] += 1
-    else:                                              # part 2
-        for i in range(len(x)): vents[x[i]][y[i]] += 1 # part 2
+        for xi in x: vents[xi][y1] += 1
+    else:                                           # part 2
+        for xi, yi in zip(x, y): vents[xi][yi] += 1 # part 2
 
 print(f'part-1/2 answer : {sum([x > 1 for l in vents for x in l])}')
