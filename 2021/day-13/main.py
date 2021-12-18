@@ -1,4 +1,4 @@
-lines = [l.rstrip().split(',') for l in open('input')]
+lines = [l.rstrip().split(',') for l in open('new_input')]
 dots = list(map(lambda x: [int(x[0]), int(x[1])], lines[:lines.index([''])]))
 folds = list(map(lambda x: x[0].split('='), lines[lines.index([''])+1:]))
 
