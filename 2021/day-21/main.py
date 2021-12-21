@@ -1,5 +1,3 @@
-import itertools
-
 def game(part, turn, bound, pos, score, p, hist, dices):
     if (p, str(pos), str(score)) in hist: return hist[(p, str(pos), str(score))]
     wins = [0, 0]
