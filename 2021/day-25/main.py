@@ -24,4 +24,4 @@ moved, m = step(m)
 while moved:
     n += 1
     moved, m = step(m)
-print(f"part-1 answer: {n}")
+print(f"part-1 answer (part 2 is having all the 2021 stars): {n}")
