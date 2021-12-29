@@ -1,3 +1,4 @@
+import time
 def game(part, turn, bound, pos, score, p, hist, dices):
     if (p, str(pos), str(score)) in hist: return hist[(p, str(pos), str(score))]
     wins = [0, 0]
@@ -17,4 +18,6 @@ def game(part, turn, bound, pos, score, p, hist, dices):
 
 game(1, 0, 1000, [5, 10], [0, 0], 0, {}, lambda t: {6 + 9*t : 1})
 dirac_dice = {3: 1, 4: 3, 5: 6, 6: 7, 7: 6, 8: 3, 9: 1}
+t = time.time()
 print(f'part-2 answer : {max(game(2, 0, 21, [5, 10], [0, 0], 0, {}, lambda t : dirac_dice))}')
+print(time.time() - t)
