@@ -6,6 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+itertools = "0.10.5"
 
 [[bin]]
 name = "day-01"
@@ -18,3 +19,7 @@ path = "src/day-02/main.rs"
 [[bin]]
 name = "day-03"
 path = "src/day-03/main.rs"
+
+[[bin]]
+name = "day-04"
+path = "src/day-04/main.rs"
