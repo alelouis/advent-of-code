@@ -1,8 +1,8 @@
 fn read_input() -> Vec<i32> {
     include_str!("input")
-    .split(",")
-    .map(|x| x.parse::<i32>().unwrap())
-    .collect()
+        .split(",")
+        .map(|x| x.parse::<i32>().unwrap())
+        .collect()
 }
 
 fn solve1(data: &mut Vec<i32>, noun: i32, verb: i32) -> i32 {
@@ -11,9 +11,9 @@ fn solve1(data: &mut Vec<i32>, noun: i32, verb: i32) -> i32 {
     data[2] = verb;
     loop {
         let op = data[head];
-        let left = data[head+1] as usize;
-        let right = data[head+2] as usize;
-        let target = data[head+3] as usize;
+        let left = data[head + 1] as usize;
+        let right = data[head + 2] as usize;
+        let target = data[head + 3] as usize;
         head += 4;
         match op {
             1 => data[target] = data[left] + data[right],
@@ -37,7 +37,7 @@ fn solve2(data: &mut Vec<i32>) -> i32 {
     ans
 }
 
-fn main(){
+fn main() {
     let mut data = read_input();
     println!("part-1 answer : {}", solve1(&mut data.clone(), 12, 2));
     println!("part-2 answer : {}", solve2(&mut data));
