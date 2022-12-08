@@ -2,7 +2,7 @@ from numpy import *
 
 trees = array([[int(d) for d in line] for line in open('input').read().splitlines()])
 rows, cols = shape(trees)
-visible_count = scenic_score = scenic_score_2 = 0
+visible_count = scenic_score = 0
 
 for r in range(1, rows-1):
     for c in range(1, cols-1):
