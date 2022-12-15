@@ -4,8 +4,7 @@ def merge(inter):
     inter.sort()
     s = [inter[0]]
     for i in inter[1:]:
-        if s[-1][0] <= i[0] <= s[-1][-1]: 
-            s[-1][-1] = max(s[-1][-1], i[-1])
+        if s[-1][0] <= i[0] <= s[-1][-1]: s[-1][-1] = max(s[-1][-1], i[-1])
         else: s.append(i)
     return s
 
