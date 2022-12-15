@@ -15,7 +15,7 @@ def get_range(a, b, c, d, y):
 
 def line_scan(line_no):
     intervals = [get_range(*list(map(int, re.findall(r'-?\d+', line))), line_no) for line in lines]
-    return merge(list(filter(lambda x: x != [], intervals)))
+    return merge([i for i in intervals if i != []])
 
 lines, lim = open('input').read().splitlines(), 4_000_000
 print(f"part-1: {sum(m[1]-m[0] for m in line_scan(lim//2))-1}")
