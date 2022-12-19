@@ -34,10 +34,3 @@ for blueprint in blueprints:
 
 print(sum([bpid * buy_all_the_bots(init_res, init_bot, 0, bpid, {"max":0}, get_maximums(costs, bpid), 24) for bpid in costs]))
 print(math.prod([buy_all_the_bots(init_res, init_bot, 0, bpid, {"max":0}, get_maximums(costs, bpid), 32) for bpid in {1:costs[1], 2:costs[2], 3:costs[3]}]))
-
-
-
-
-
-
-
