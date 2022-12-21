@@ -2,26 +2,18 @@ import networkx as nx
 from sympy import sympify, solve
 
 def graph_solve(part):
-    g = nx.DiGraph()
-    e, out = [], {}
+    g, e, out = nx.DiGraph(), [], {}
     for node in nodes:
         l, r = node.split(": ")
-        if r.isnumeric():
-            if part == 2 and l == 'humn': r = "x"
-            out.update({l: r})
+        if r.isnumeric(): out.update({l: "x" if part == 2 and l == 'humn' else r})
         else:
-            pl, pr, op = r[0:4], r[7:], r[5]
-            if part == 2 and l == 'root': op = "=="
-            out.update({l: {"op": op, "l": pl, "r": pr}})
-            e.extend([(pr, l), (pl, l)])
+            out.update({l: {"op": "==" if part == 2 and l == 'root' else r[5], "l": r[0:4], "r": r[7:]}})
+            e.extend([(r[7:], l), (r[0:4], l)])
     g.add_edges_from(e)
     for node in list(nx.topological_sort(g)):
-        if isinstance(out[node], dict):
-            op, l, r = out[node]["op"], out[node]["l"], out[node]["r"]
-            out[node] = f"({out[l]}{op}{out[r]})" 
+        if isinstance(out[node], dict): out[node] = f"({out[out[node]['l']]}{out[node]['op']}{out[out[node]['r']]})" 
     return out
 
 nodes = open("input").read().splitlines()
 print(int(eval(graph_solve(part=1)['root'])))
-out = graph_solve(part=2)
-print(solve(sympify(out["root"].split("==")[0][1:]) - sympify(out["root"].split("==")[1][:-1]))[0])
+print(solve(sympify(graph_solve(part=2)["root"].split("==")[0][1:]) - sympify(graph_solve(part=2)["root"].split("==")[1][:-1]))[0])
