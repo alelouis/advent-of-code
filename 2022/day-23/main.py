@@ -14,9 +14,11 @@ while moving:
     if cround == 10: print(f'part-1: {get_area(elves)-len(elves)}')
     old_elves, props = {e for e in elves}, {}
     for elf in elves:
-        if any(e in {add(elf, v) for v in mov.values()} for e in elves):
+        adj = {add(elf, v) for v in mov.values()}
+        if any(e in adj for e in elves):
             for i in range(4):
-                if all(e not in elves for e in {add(elf, mov[d]) for d in di[cycles[(cycle+i)%4]]}):
+                look = {add(elf, mov[d]) for d in di[cycles[(cycle+i)%4]]}
+                if all(e not in elves for e in look):
                     props[elf] = add(elf, mov[cycles[(cycle+i)%4]])
                     break
     rem_add = {(elf, prop) for elf, prop in props.items() if sum(prop==p for p in props.values()) == 1}
