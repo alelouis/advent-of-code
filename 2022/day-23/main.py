@@ -8,7 +8,7 @@ di = {'N': {'N', 'NE', 'NW'}, 'S': {'S', 'SE', 'SW'}, 'E': {'E', 'SE', 'NE'}, 'W
 all_dir, cycles = {v for v in mov.values()}, ['N', 'S', 'W', 'E']
 
 cycle, max_round, cround, moving = 0, 10, 0, True
-data = open('test').read().splitlines()
+data = open('input').read().splitlines()
 elves = {(r, c) for c in range(len(data[0])) for r in range(len(data)) if data[r][c] == "#"}
 while moving:
     if cround == 10: print(f'part-1: {get_area(elves)-len(elves)}')
