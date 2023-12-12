@@ -29,13 +29,13 @@ def ways(memo, springs, groups):
             memo[(springs, groups)] = 0
             return memo[(springs, groups)]
         elif len(springs) > groups[0]:
-            # If all # or ? AND a character after the current group
+            # If all # or ? AND a character after the current group, check that character :
             if springs[groups[0]] == "#":
-                # The group would be larger and groups[0], can't be a solution
+                # If #, the group would be larger than current group, can't be a solution
                 memo[(springs, groups)] = 0
                 return memo[(springs, groups)]
             if springs[groups[0]] in ["?", "."]:
-                # If next character is a potential . validate group and process remaining .
+                # If a potential . validate group and process remaining springs
                 memo[(springs, groups)] = ways(memo, springs[1 + groups[0] :], groups[1:])
                 return memo[(springs, groups)]
         elif len(springs) < groups[0]:
