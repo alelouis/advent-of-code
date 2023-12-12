@@ -29,7 +29,7 @@ def ways(memo, springs, groups):
             memo[(springs, groups)] = 0
             return memo[(springs, groups)]
         elif len(springs) > groups[0]:
-            # If there are no . and a character after the current group
+            # If all # or ? AND a character after the current group
             if springs[groups[0]] == "#":
                 # The group would be larger and groups[0], can't be a solution
                 memo[(springs, groups)] = 0
@@ -39,7 +39,7 @@ def ways(memo, springs, groups):
                 memo[(springs, groups)] = ways(memo, springs[1 + groups[0] :], groups[1:])
                 return memo[(springs, groups)]
         elif len(springs) < groups[0]:
-            # if the length of the string is inferior to the length group, can't be a solution
+            # If the length of the string is inferior to the length group, can't be a solution
             memo[(springs, groups)] = 0
             return memo[(springs, groups)]
         elif len(springs) == groups[0]:
