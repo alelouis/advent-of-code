@@ -3,6 +3,7 @@
 
 
 def ways(memo, springs, groups):
+    # If already computed this set of arguments, return stored value
     if (springs, groups) in memo:
         return memo[(springs, groups)]
     if len(groups) == 0:
