@@ -17,7 +17,6 @@ def where(tile, heading):
 def propagate(ray, layout, moves):
     pos, heading = ray
     new_pos = [pos[0] + headings[heading][0], pos[1] + headings[heading][1]]
-
     if 0 <= new_pos[0] < rows and 0 <= new_pos[1] < cols:
         if heading in moves[new_pos[0]][new_pos[1]]:
             return
@@ -27,7 +26,7 @@ def propagate(ray, layout, moves):
             for new_heading in where(layout[(new_pos[0], new_pos[1])], heading):
                 propagate([new_pos, new_heading], layout, moves)
         else:
-            return propagate([new_pos, heading], layout, moves)
+            propagate([new_pos, heading], layout, moves)
 
 
 def find_max_energy():
