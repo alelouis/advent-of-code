@@ -8,10 +8,7 @@ def count_energy(moves):
 
 
 def where(tile, heading):
-    if heading in where_dict[tile]:
-        return where_dict[tile][heading]
-    else:
-        return heading
+    return where_dict[tile][heading] if heading in where_dict[tile] else heading
 
 
 def propagate(ray, layout, moves):
