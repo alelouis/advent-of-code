@@ -1,11 +1,16 @@
 from heapq import *
+import time
+
+
+def manhattan(p, q):
+    return abs(p[0] - q[0]) + abs(p[1] - q[1])
 
 
 def solve_this_fucking_day(end, part):
     (r, s) = (1, 3) if part == 1 else (4, 10)
-    q, v = [(0, (0, 0), "?")], set()
+    q, v = [(0, 0, (0, 0), "?")], set()
     while q:
-        h, p, d = heappop(q)
+        _, h, p, d = heappop(q)
         if (p, d) not in v:
             v.add((p, d))
             if p == end:
@@ -17,7 +22,7 @@ def solve_this_fucking_day(end, part):
                     if 0 <= np[0] < rows and 0 <= np[1] < cols:
                         nh += lines[np[0]][np[1]]
                         if i >= r and (np, nd) not in v:
-                            heappush(q, (nh, np, nd))
+                            heappush(q, (nh - manhattan(np, (70, 70)), nh, np, nd))
 
 
 op = {"v": "<>", "^": "<>", "<": "v^", ">": "v^", "?": "v^<>"}
