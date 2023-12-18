@@ -3,7 +3,7 @@ def lava(trenches, total_length):
     return int(1 + area - total_length / 2 + total_length)
 
 
-def solve(part, total_length=0):
+def solve(part, tr, total_length=0):
     for dig in plan:
         dir, amount, hexa = dig
         if part == 2:
@@ -13,8 +13,8 @@ def solve(part, total_length=0):
     return lava(tr, total_length)
 
 
-plan, tr = [l.strip().split(" ") for l in open("input")], [(0, 0)]
+plan = [l.strip().split(" ") for l in open("input")]
 moves = {"R": (0, 1), "L": (0, -1), "U": (-1, 0), "D": (1, 0)}
 
-print(solve(1))
-print(solve(2))
+print(solve(1, [(0, 0)]))
+print(solve(2, [(0, 0)]))
