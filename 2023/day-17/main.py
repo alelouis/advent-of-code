@@ -1,5 +1,4 @@
 from heapq import *
-import time
 
 
 def manhattan(p, q):
