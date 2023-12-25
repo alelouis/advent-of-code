@@ -11,3 +11,5 @@ while c != 3:
     c, p = nx.minimum_cut(g, *random.sample(list(g.nodes()), k=2))
 
 print(len(p[0]) * len(p[1]))
+
+## Merry Christmas !
