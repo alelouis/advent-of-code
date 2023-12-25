@@ -47,7 +47,6 @@ def oops():
         equations.append(sympy.Eq(xi + t * vxi, p[0] + v[0] * t))
         equations.append(sympy.Eq(yi + t * vyi, p[1] + v[1] * t))
         equations.append(sympy.Eq(zi + t * vzi, p[2] + v[2] * t))
-    d = sympy.solve(equations)[0]
     return sum(sympy.solve(equations)[0][k] for k in (xi, yi, zi))
 
 
