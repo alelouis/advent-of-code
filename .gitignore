@@ -17,3 +17,8 @@ Cargo.lock
 .vscode
 
 */*/input
+
+Cargo.toml
+# Added by cargo
+
+/target
