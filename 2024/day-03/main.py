@@ -1,7 +1,5 @@
-from re import finditer
-from math import prod
+from re import finditer as f
+from math import prod as pr
 
-ops, r = open("input").read(), r'mul\((\d+),(\d+)\)'
-solve = lambda p: sum(prod(map(int, m.groups())) for m in finditer(r, ops) if p == 1 or (ops.rfind("do()", 0, s := m.start()) >= ops.rfind("don't()", 0, s)))
-print(solve(1))
-print(solve(2))
+o = open("input").read()
+print([sum(pr(map(int, m.groups())) for m in f(r'mul\((\d+),(\d+)\)', o) if p | (o.rfind("do()", 0, s := m.start()) >= o.rfind("don't()", 0, s))) for p in [-1, 0]])
