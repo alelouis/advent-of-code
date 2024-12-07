@@ -18,3 +18,5 @@ d, c = {'^': (-1, 0), 'v': (1, 0), '>': (0, 1), '<': (0, -1)}, {'^': '>', '>': '
 v = walk(ter, obs)
 print(len(set(p for _, p in v)))
 print(sum(walk(ter - {o}, obs | {o}) == 'loop' for o in (set(p for _, p in v) - set(start))))
+
+
