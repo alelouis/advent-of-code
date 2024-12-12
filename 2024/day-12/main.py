@@ -35,8 +35,7 @@ def get_corners(pos, where, garden):
     corner_count += sum((set(c) == where) for c in [['^', '<'], ['^', '>'], ['v', '<'], ['v', '>']])
     corner_count += sum(2 * (set(c) == where) for c in 'v>^<')
     for c, delta in zip([['^', '<'], ['^', '>'], ['v', '<'], ['v', '>']], [-1 - 1j, -1 + 1j, +1 - 1j, +1 + 1j]):
-        if all(d in where for d in set(c)) and (garden.get(pos + delta, False) != garden[pos]):
-            corner_count += all(d in where for d in set(c)) and (garden.get(pos + delta, False) != garden[pos])
+        corner_count += all(d in where for d in set(c)) and (garden.get(pos + delta, False) != garden[pos])
     return corner_count
 
 
