@@ -22,3 +22,7 @@ Cargo.toml
 # Added by cargo
 
 /target
+
+.DS_Store
+test
+.zed
