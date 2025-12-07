@@ -18,7 +18,7 @@ def down(old_beams):
     for ob in old_beams:
         counts[ob + 1] = counts[ob]
         counts[ob] = 0
-    return {b + 1 for b in active_beams}
+    return {b + 1 for b in old_beams}
 
 
 map, counts = [l.strip() for l in open("input").readlines()], defaultdict(int)
